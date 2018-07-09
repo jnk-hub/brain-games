@@ -1,44 +1,40 @@
 import readlineSync from "readline-sync";
 
-const title = "Welcome to the Brain Games!\n";
+export const print = (...lines) => lines.forEach(line => console.log(line));
+export const askQuestion = str => readlineSync.question(`${str} `);
 
-const print = (...lines) => lines.forEach(line => console.log(line));
-const question = str => readlineSync.question(`${str} `);
+export default (game, description = "", turns = 3) => {
+  print("Welcome to the Brain Games!\n");
+  const player = askQuestion("May I have your name?");
+  print(`Hello, ${player}!`);
+  print(description);
 
-const askForName = () => question("May I have your name?");
-const salute = name => console.log(`Hello, ${name}!`);
-
-export const even = () => {
-  print(title);
-  const player = askForName();
-  print('\nAnswer "yes" if number even otherwise answer "no".\n');
-  const isEven = n => n % 2 === 0;
   const turn = steps => {
     if (steps === 0) {
       print(`Congratulations, ${player}!`);
       return;
     }
 
-    const number = Math.floor(Math.random() * 100);
-    const answer = question(`Question: ${number}`);
-    const correctAnswer = isEven(number) ? "yes" : "no";
+    const { question, answer } = game();
 
-    if (answer !== correctAnswer) {
-      print(
-        `'${answer}' is wrong answer ;(.`,
-        `Correct answer was '${correctAnswer}'.\n`,
-        `Let's try again, ${player}!`
-      );
-    } else {
+    const attempt = askQuestion(`Question: ${question}`);
+
+    if (answer === attempt) {
       print("Correct!\n");
       turn(steps - 1);
+    } else {
+      print(
+        `'${attempt}' is wrong answer =(`,
+        `Correct answer was '${answer}'\n`,
+        `Let's try again, ${player}!`
+      );
     }
   };
-  turn(3);
+  turn(turns);
 };
 
-export default () => {
-  print(title);
-  const userName = askForName();
-  salute(userName);
+export const games = () => {
+  print("Welcome to the Brain Games!\n");
+  const player = askQuestion("May I have your name?");
+  print(`Hello, ${player}!`);
 };

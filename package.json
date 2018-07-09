@@ -1,6 +1,6 @@
 {
   "name": "jnk-brain-games",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "a set of mini-games launched from the console",
   "keywords": [
     "game",
@@ -8,7 +8,8 @@
   ],
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-calc": "dist/bin/brain-calc.js"
   },
   "files": [
     "dist"

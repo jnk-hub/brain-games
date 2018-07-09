@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import { even as game } from "..";
+import start from "..";
+import game from "../game/brain-even";
 
-game();
+start(game, '\nAnswer "yes" if number even otherwise answer "no".\n');
