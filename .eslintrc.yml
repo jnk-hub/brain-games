@@ -1,0 +1,16 @@
+plugins:
+  - prettier
+  - babel
+
+env:
+  node: true
+
+parser: babel-eslint
+
+extends: 
+  - 'airbnb-base'
+  - 'plugin:prettier/recommended'
+
+rules:
+  prettier/prettier: "error"
+  no-console: 0
