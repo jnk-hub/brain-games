@@ -7,7 +7,7 @@ export default (game, description = "", turns = 3) => {
   print("Welcome to the Brain Games!\n");
   const player = askQuestion("May I have your name?");
   print(`Hello, ${player}!`);
-  print(description);
+  print(`\n${description}\n`);
 
   const turn = steps => {
     if (steps === 0) {
