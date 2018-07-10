@@ -3,21 +3,29 @@ import { randomNumber } from "../utils";
 
 const balance = number => {
   const iter = digits => {
-    const [maxDigit, ...rest] = digits;
-    const minDigit = digits[digits.length - 1];
-    rest.length = digits.length - 1;
+    const maxDigit = Math.max(...digits);
+    const minDigit = Math.min(...digits);
 
-    if (maxDigit - minDigit > 1) {
-      return iter([maxDigit - 1, minDigit + 1, ...rest].sort());
+    if (maxDigit - minDigit <= 1) {
+      return digits;
     }
-    return [...digits];
+
+    return iter(
+      digits.map(digit => {
+        if (digit === maxDigit) return digit - 1;
+        if (digit === minDigit) return digit + 1;
+        return digit;
+      })
+    );
   };
 
   return iter(
     String(number)
       .split("")
-      .sort()
-  ).join("");
+      .map(Number)
+  )
+    .sort()
+    .join("");
 };
 
 const rule = "Balance the given number.";
