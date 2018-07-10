@@ -1,21 +1,41 @@
 import readlineSync from "readline-sync";
 
-export const print = (...lines) => lines.forEach(line => console.log(line));
-export const askQuestion = str => readlineSync.question(`${str} `);
+import { print } from "./utils";
 
-export default (game, description = "", turns = 3) => {
+import even, { rule as evenRule } from "./game/brain-even";
+import calc, { rule as calcRule } from "./game/brain-calc";
+import gcd, { rule as gcdRule } from "./game/brain-gcd";
+
+const askQuestion = str => readlineSync.question(`${str} `);
+
+const games = {
+  even: {
+    game: even,
+    rule: evenRule
+  },
+  calc: {
+    game: calc,
+    rule: calcRule
+  },
+  gcd: {
+    game: gcd,
+    rule: gcdRule
+  }
+};
+
+export default (gameName, turns = 3) => {
   print("Welcome to the Brain Games!\n");
   const player = askQuestion("May I have your name?");
   print(`Hello, ${player}!`);
-  print(`\n${description}\n`);
+  print(`\n${games[gameName].rule}\n`);
 
   const turn = steps => {
-    if (steps === 0) {
+    if (!steps) {
       print(`Congratulations, ${player}!`);
       return;
     }
 
-    const { question, answer } = game();
+    const { question, answer } = games[gameName].game();
 
     const attempt = askQuestion(`Question: ${question}`);
 
@@ -31,10 +51,4 @@ export default (game, description = "", turns = 3) => {
     }
   };
   turn(turns);
-};
-
-export const games = () => {
-  print("Welcome to the Brain Games!\n");
-  const player = askQuestion("May I have your name?");
-  print(`Hello, ${player}!`);
 };

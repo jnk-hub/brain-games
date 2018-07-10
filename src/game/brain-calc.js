@@ -1,18 +1,22 @@
-const ops = {
+import { randomNumber } from "../utils";
+
+const operations = {
   "+": (a, b) => a + b,
   "-": (a, b) => a - b,
   "*": (a, b) => a * b
 };
 
-export default () => {
-  const a = Math.floor(Math.random() * 10);
-  const b = Math.floor(Math.random() * 10);
+export const rule = "What is the result of the expression?";
 
-  const opSymbols = Object.keys(ops);
-  const op = opSymbols[Math.floor(Math.random() * opSymbols.length)];
+export default () => {
+  const a = randomNumber(10);
+  const b = randomNumber(10);
+
+  const operationSymbol = Object.keys(operations);
+  const operation = operationSymbol[randomNumber(operationSymbol.length)];
 
   return {
-    question: `${a} ${op} ${b} =`,
-    answer: String(ops[op](a, b))
+    question: `${a} ${operation} ${b} =`,
+    answer: String(operations[operation](a, b))
   };
 };
