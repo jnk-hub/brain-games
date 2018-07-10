@@ -1,3 +1,4 @@
+import gameplay from "../index";
 import { randomNumber } from "../utils";
 
 const operations = {
@@ -6,9 +7,9 @@ const operations = {
   "*": (a, b) => a * b
 };
 
-export const rule = "What is the result of the expression?";
+const rule = "What is the result of the expression?";
 
-export default () => {
+const game = () => {
   const a = randomNumber(10);
   const b = randomNumber(10);
 
@@ -20,3 +21,5 @@ export default () => {
     answer: String(operations[operation](a, b))
   };
 };
+
+export default () => gameplay(game, rule);

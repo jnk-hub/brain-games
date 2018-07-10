@@ -1,13 +1,16 @@
+import gameplay from "../index";
 import { randomNumber } from "../utils";
 
 const balance = number => {
   const iter = digits => {
-    const maxDigit = Number(digits.pop());
-    const minDigit = Number(digits.shift());
+    const [maxDigit, ...rest] = digits;
+    const minDigit = digits[digits.length - 1];
+    rest.length = digits.length - 1;
+
     if (maxDigit - minDigit > 1) {
-      return iter([maxDigit - 1, minDigit + 1, ...digits].sort());
+      return iter([maxDigit - 1, minDigit + 1, ...rest].sort());
     }
-    return [minDigit, ...digits, maxDigit];
+    return [...digits];
   };
 
   return iter(
@@ -17,9 +20,9 @@ const balance = number => {
   ).join("");
 };
 
-export const rule = "Balance the given number.";
+const rule = "Balance the given number.";
 
-export default () => {
+const game = () => {
   const number = randomNumber(9999, 10);
 
   return {
@@ -27,3 +30,5 @@ export default () => {
     answer: balance(number)
   };
 };
+
+export default () => gameplay(game, rule);
