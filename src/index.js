@@ -5,6 +5,7 @@ import { print } from "./utils";
 import even, { rule as evenRule } from "./game/brain-even";
 import calc, { rule as calcRule } from "./game/brain-calc";
 import gcd, { rule as gcdRule } from "./game/brain-gcd";
+import balance, { rule as balanceRule } from "./game/brain-balance";
 
 const askQuestion = str => readlineSync.question(`${str} `);
 
@@ -20,6 +21,10 @@ const games = {
   gcd: {
     game: gcd,
     rule: gcdRule
+  },
+  balance: {
+    game: balance,
+    rule: balanceRule
   }
 };
 
