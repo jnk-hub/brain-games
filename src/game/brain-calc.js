@@ -12,8 +12,8 @@ export default () => {
   const a = randomNumber(10);
   const b = randomNumber(10);
 
-  const operationSymbol = Object.keys(operations);
-  const operation = operationSymbol[randomNumber(operationSymbol.length)];
+  const operationSymbols = Object.keys(operations);
+  const operation = operationSymbols[randomNumber(operationSymbols.length)];
 
   return {
     question: `${a} ${operation} ${b} =`,
