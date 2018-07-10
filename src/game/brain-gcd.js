@@ -5,7 +5,7 @@ export default () => {
   const b = Math.floor(Math.random() * 100);
 
   return {
-    question: `НОД ${a} и ${b} =`,
+    question: `GCD ${a} & ${b} =`,
     answer: String(gcd(a, b))
   };
 };
