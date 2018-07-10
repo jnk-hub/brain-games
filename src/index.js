@@ -29,13 +29,15 @@ export default (gameName, turns = 3) => {
   print(`Hello, ${player}!`);
   print(`\n${games[gameName].rule}\n`);
 
+  const { game } = games[gameName];
+
   const turn = steps => {
     if (!steps) {
       print(`Congratulations, ${player}!`);
       return;
     }
 
-    const { question, answer } = games[gameName].game();
+    const { question, answer } = game();
 
     const attempt = askQuestion(`Question: ${question}`);
 
