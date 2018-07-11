@@ -1,11 +1,10 @@
 import readlineSync from "readline-sync";
 
-const askQuestion = str => readlineSync.question(`${str} `);
 const print = (...lines) => lines.forEach(line => console.log(line));
 
 export default (game, rule) => {
   print("Welcome to the Brain Games!\n");
-  const player = askQuestion("May I have your name?");
+  const player = readlineSync.question("May I have your name? ");
   print(`Hello, ${player}!`);
   print(`\n${rule}\n`);
 
@@ -17,7 +16,7 @@ export default (game, rule) => {
 
     const { question, answer } = game();
 
-    const attempt = askQuestion(`Question: ${question}`);
+    const attempt = readlineSync.question(`Question: ${question} `);
 
     if (answer === attempt) {
       print("Correct!\n");

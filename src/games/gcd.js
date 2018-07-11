@@ -1,4 +1,4 @@
-import gameplay from "../index";
+import gameplay from "..";
 import { randomNumber } from "../utils";
 
 const gcd = (a, b) => (b ? gcd(b, a % b) : a);

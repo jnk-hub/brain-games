@@ -1,4 +1,4 @@
-import gameplay from "../index";
+import gameplay from "..";
 import { randomNumber } from "../utils";
 
 const operations = {

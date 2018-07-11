@@ -1,4 +1,4 @@
-import gameplay from "../index";
+import gameplay from "..";
 import { randomNumber } from "../utils";
 
 const balance = number => {
@@ -10,13 +10,13 @@ const balance = number => {
       return digits;
     }
 
-    return iter(
-      digits.map(digit => {
-        if (digit === maxDigit) return digit - 1;
-        if (digit === minDigit) return digit + 1;
-        return digit;
-      })
-    );
+    const newDigits = digits.map(digit => {
+      if (digit === maxDigit) return digit - 1;
+      if (digit === minDigit) return digit + 1;
+      return digit;
+    });
+
+    return iter(newDigits);
   };
 
   return iter(
