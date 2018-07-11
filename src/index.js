@@ -2,6 +2,8 @@ import readlineSync from "readline-sync";
 
 const print = (...lines) => lines.forEach(line => console.log(line));
 
+const numberStepsOfGame = 3;
+
 export default (game, rule) => {
   print("Welcome to the Brain Games!\n");
   const player = readlineSync.question("May I have your name? ");
@@ -29,5 +31,5 @@ export default (game, rule) => {
       );
     }
   };
-  turn(3);
+  turn(numberStepsOfGame);
 };

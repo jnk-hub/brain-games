@@ -6,18 +6,22 @@ const rule = "Is this number prime? Answer yes or no.";
 const isPrime = number => {
   const minPrimeNamber = 2;
   if (number < minPrimeNamber) return false;
+  if (number === minPrimeNamber) return true;
 
-  const iter = count => {
-    if (count === number) {
-      return true;
-    }
-    return number % count === 0 ? false : iter(count + 1);
+  const sqrtOfNumber = Math.ceil(Math.sqrt(number));
+
+  const iter = denominator => {
+    if (denominator > sqrtOfNumber) return true;
+    if (number % denominator === 0) return false;
+    return iter(denominator + 1);
   };
   return iter(minPrimeNamber);
 };
 
+const upperLimitOfNumber = 100;
+
 const game = () => {
-  const number = randomNumber(100);
+  const number = randomNumber(upperLimitOfNumber);
 
   return {
     question: `${number} - is prime?`,

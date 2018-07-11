@@ -30,8 +30,10 @@ const balance = number => {
 
 const rule = "Balance the given number.";
 
+const [upperLimitOfNumber, lowerLimitOfNumber] = [9999, 10];
+
 const game = () => {
-  const number = randomNumber(9999, 10);
+  const number = randomNumber(upperLimitOfNumber, lowerLimitOfNumber);
 
   return {
     question: number,

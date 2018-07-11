@@ -1,14 +1,19 @@
 import gameplay from "..";
 import { randomNumber } from "../utils";
 
-const rule = "What number is missing in this progression?";
-
 const getItemProgression = start => (step, item) => item * start + step;
 
+const rule = "What number is missing in this progression?";
+
+const progressionLength = 10;
+const [upperLimitOfNumber, lowerLimitOfNumber] = [10, 1];
+
 const game = () => {
-  const progression = Array(10)
-    .fill(randomNumber(10, 1))
-    .map(getItemProgression(randomNumber(10, 1)));
+  const progression = Array(progressionLength)
+    .fill(randomNumber(upperLimitOfNumber, lowerLimitOfNumber))
+    .map(
+      getItemProgression(randomNumber(upperLimitOfNumber, lowerLimitOfNumber))
+    );
 
   const secret = progression[randomNumber(progression.length)];
 
