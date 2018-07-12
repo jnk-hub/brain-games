@@ -6,7 +6,7 @@ const numberToDigits = number =>
     .split("")
     .map(Number);
 
-const digitsToNamber = array => array.sort().join("");
+const digitsToNumber = array => array.sort().join("");
 
 const balance = number => {
   const iter = digits => {
@@ -26,10 +26,10 @@ const balance = number => {
     return iter(newDigits);
   };
 
-  const noBalanceDigits = numberToDigits(number);
-  const balanceDigits = iter(noBalanceDigits);
+  const noBalancedDigits = numberToDigits(number);
+  const balancedDigits = iter(noBalancedDigits);
 
-  return digitsToNamber(balanceDigits);
+  return digitsToNumber(balancedDigits);
 };
 
 const rule = "Balance the given number.";

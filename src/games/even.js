@@ -8,11 +8,11 @@ const rule = 'Answer "yes" if number even otherwise answer "no".';
 const upperLimitOfNumber = 100;
 
 const game = () => {
-  const number = randomNumber(upperLimitOfNumber);
+  const question = randomNumber(upperLimitOfNumber);
 
   return {
-    question: number,
-    answer: isEven(number) ? "yes" : "no"
+    question,
+    answer: isEven(question) ? "yes" : "no"
   };
 };
 
