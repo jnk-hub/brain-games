@@ -21,11 +21,11 @@ const rule = "Is this number prime? Answer yes or no.";
 const upperLimitOfNumber = 100;
 
 const game = () => {
-  const number = randomNumber(upperLimitOfNumber);
+  const question = randomNumber(upperLimitOfNumber);
 
   return {
-    question: `${number} - is prime?`,
-    answer: isPrime(number) ? "yes" : "no"
+    question: `${question} - is prime?`,
+    answer: isPrime(question) ? "yes" : "no"
   };
 };
 

@@ -38,11 +38,11 @@ const rule = "Balance the given number.";
 const [upperLimitOfNumber, lowerLimitOfNumber] = [9999, 10];
 
 const game = () => {
-  const number = randomNumber(upperLimitOfNumber, lowerLimitOfNumber);
+  const question = randomNumber(upperLimitOfNumber, lowerLimitOfNumber);
 
   return {
-    question: number,
-    answer: balance(number)
+    question,
+    answer: balance(question)
   };
 };
 
