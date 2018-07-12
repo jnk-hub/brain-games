@@ -1,6 +1,13 @@
 import gameplay from "..";
 import { randomNumber } from "../utils";
 
+const numberToDigits = number =>
+  String(number)
+    .split("")
+    .map(Number);
+
+const digitsToNamber = array => array.sort().join("");
+
 const balance = number => {
   const iter = digits => {
     const maxDigit = Math.max(...digits);
@@ -19,13 +26,10 @@ const balance = number => {
     return iter(newDigits);
   };
 
-  return iter(
-    String(number)
-      .split("")
-      .map(Number)
-  )
-    .sort()
-    .join("");
+  const noBalanceDigits = numberToDigits(number);
+  const balanceDigits = iter(noBalanceDigits);
+
+  return digitsToNamber(balanceDigits);
 };
 
 const rule = "Balance the given number.";

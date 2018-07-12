@@ -1,8 +1,6 @@
 import gameplay from "..";
 import { randomNumber } from "../utils";
 
-const rule = "Is this number prime? Answer yes or no.";
-
 const isPrime = number => {
   const minPrimeNamber = 2;
   if (number < minPrimeNamber) return false;
@@ -17,6 +15,8 @@ const isPrime = number => {
   };
   return iter(minPrimeNamber);
 };
+
+const rule = "Is this number prime? Answer yes or no.";
 
 const upperLimitOfNumber = 100;
 
