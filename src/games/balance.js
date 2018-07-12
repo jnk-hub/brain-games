@@ -9,25 +9,26 @@ const numberToDigits = number =>
 const digitsToNumber = array => array.sort().join("");
 
 const balance = number => {
-  const iter = digits => {
-    const maxDigit = Math.max(...digits);
-    const minDigit = Math.min(...digits);
+  const digits = numberToDigits(number);
+  const countOfDigits = digits.length;
+  const sumOfDigits = digits.reduce((a, b) => a + b);
+  const average = sumOfDigits / countOfDigits;
 
-    if (maxDigit - minDigit <= 1) {
-      return digits;
-    }
+  if (sumOfDigits % countOfDigits === 0) {
+    const balancedDigits = Array(countOfDigits).fill(average);
+    return digitsToNumber(balancedDigits);
+  }
 
-    const newDigits = digits.map(digit => {
-      if (digit === maxDigit) return digit - 1;
-      if (digit === minDigit) return digit + 1;
-      return digit;
-    });
+  const fewerNumber = Math.floor(average);
+  const greaterNumber = Math.ceil(average);
 
-    return iter(newDigits);
-  };
+  const countOfFewerNumber = greaterNumber * countOfDigits - sumOfDigits;
+  const countOfGreaterNumber = countOfDigits - countOfFewerNumber;
 
-  const noBalancedDigits = numberToDigits(number);
-  const balancedDigits = iter(noBalancedDigits);
+  const balancedDigits = [
+    ...Array(countOfFewerNumber).fill(fewerNumber),
+    ...Array(countOfGreaterNumber).fill(greaterNumber)
+  ];
 
   return digitsToNumber(balancedDigits);
 };
