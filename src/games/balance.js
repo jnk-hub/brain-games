@@ -6,8 +6,6 @@ const numberToDigits = number =>
     .split("")
     .map(Number);
 
-const digitsToNumber = array => array.sort().join("");
-
 const balance = number => {
   const digits = numberToDigits(number);
   const countOfDigits = digits.length;
@@ -16,7 +14,7 @@ const balance = number => {
 
   if (sumOfDigits % countOfDigits === 0) {
     const balancedDigits = Array(countOfDigits).fill(average);
-    return digitsToNumber(balancedDigits);
+    return balancedDigits.join("");
   }
 
   const fewerNumber = Math.floor(average);
@@ -28,7 +26,7 @@ const balance = number => {
     ...Array(countOfFewerNumber).fill(fewerNumber),
     ...Array(countOfGreaterNumber).fill(greaterNumber)
   ];
-  return digitsToNumber(balancedDigits);
+  return balancedDigits.join("");
 };
 
 const rule = "Balance the given number.";
