@@ -21,7 +21,6 @@ const balance = number => {
 
   const fewerNumber = Math.floor(average);
   const greaterNumber = Math.ceil(average);
-
   const countOfFewerNumber = greaterNumber * countOfDigits - sumOfDigits;
   const countOfGreaterNumber = countOfDigits - countOfFewerNumber;
 
@@ -29,7 +28,6 @@ const balance = number => {
     ...Array(countOfFewerNumber).fill(fewerNumber),
     ...Array(countOfGreaterNumber).fill(greaterNumber)
   ];
-
   return digitsToNumber(balancedDigits);
 };
 
