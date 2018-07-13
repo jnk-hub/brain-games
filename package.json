@@ -1,6 +1,6 @@
 {
   "name": "jnk-brain-games",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "a set of mini-games launched from the console",
   "keywords": [
     "game",
@@ -25,8 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jnk-hub/project-lvl1-s304.git"
+    "url": "git+https://github.com/jnk-hub/brain-games.git"
   },
+  "bugs": {
+    "url": "https://github.com/jnk-hub/brain-games/issues"
+  },
+  "homepage": "https://github.com/jnk-hub/brain-games/#readme",
   "author": "Jnk",
   "license": "ISC",
   "devDependencies": {
