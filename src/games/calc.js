@@ -6,7 +6,11 @@ const operations = {
   "-": (a, b) => a - b,
   "*": (a, b) => a * b
 };
-const SymbolsOfOperations = Object.keys(operations);
+const getOperationSymbol = () => {
+  const symbols = Object.keys(operations);
+  return symbols[randomNumber(symbols.length)];
+};
+const getOperationFunction = symbol => operations[symbol];
 
 const rule = "What is the result of the expression?";
 
@@ -15,13 +19,12 @@ const upperLimitOfNumber = 10;
 const game = () => {
   const a = randomNumber(upperLimitOfNumber);
   const b = randomNumber(upperLimitOfNumber);
-
-  const operationSymbol =
-    SymbolsOfOperations[randomNumber(SymbolsOfOperations.length)];
+  const operationSymbol = getOperationSymbol();
+  const operationFunction = getOperationFunction(operationSymbol);
 
   return {
     question: `${a} ${operationSymbol} ${b}`,
-    answer: String(operations[operationSymbol](a, b))
+    answer: String(operationFunction(a, b))
   };
 };
 
