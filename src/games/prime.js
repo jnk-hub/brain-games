@@ -5,7 +5,6 @@ const isPrime = number => {
   const minPrimeNamber = 2;
   if (number < minPrimeNamber) return false;
   if (number === minPrimeNamber) return true;
-
   const sqrtOfNumber = Math.ceil(Math.sqrt(number));
 
   const iter = denominator => {
@@ -16,17 +15,15 @@ const isPrime = number => {
   return iter(minPrimeNamber);
 };
 
-const rule = "Is this number prime? Answer yes or no.";
-
 const upperLimitOfNumber = 100;
 
 const game = () => {
   const question = randomNumber(upperLimitOfNumber);
-
   return {
     question: `${question} - is prime?`,
     answer: isPrime(question) ? "yes" : "no"
   };
 };
+game.rule = "Is this number prime? Answer yes or no.";
 
-export default () => gameplay(game, rule);
+export default () => gameplay(game);

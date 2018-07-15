@@ -6,10 +6,12 @@ const makeProgression = (count, start, step) =>
     .fill(null)
     .map((_, index) => index * start + step);
 
-const hideItem = (index, progression) =>
+const getItem = (progression, index) => progression[index];
+
+const hideItem = (progression, index) =>
   progression.map((item, i) => (i === index ? ".." : item));
 
-const rule = "What number is missing in this progression?";
+const toString = progression => progression.join(" ");
 
 const progressionLength = 10;
 const [upperLimitOfNumber, lowerLimitOfNumber] = [10, 1];
@@ -17,19 +19,18 @@ const [upperLimitOfNumber, lowerLimitOfNumber] = [10, 1];
 const game = () => {
   const startProgression = randomNumber(upperLimitOfNumber, lowerLimitOfNumber);
   const stepProgression = randomNumber(upperLimitOfNumber, lowerLimitOfNumber);
-
   const progression = makeProgression(
     progressionLength,
     startProgression,
     stepProgression
   );
-
   const secretIndex = randomNumber(progression.length);
-
+  const progressionMissedItem = hideItem(progression, secretIndex);
   return {
-    question: hideItem(secretIndex, progression).join(" "),
-    answer: String(progression[secretIndex])
+    question: toString(progressionMissedItem),
+    answer: String(getItem(progression, secretIndex))
   };
 };
+game.rule = "What number is missing in this progression?";
 
-export default () => gameplay(game, rule);
+export default () => gameplay(game);
