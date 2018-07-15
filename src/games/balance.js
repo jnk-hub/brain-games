@@ -1,13 +1,10 @@
 import gameplay from "..";
 import { randomNumber } from "../utils";
 
-const numberToDigits = number =>
-  String(number)
+const balance = number => {
+  const digits = String(number)
     .split("")
     .map(Number);
-
-const balance = number => {
-  const digits = numberToDigits(number);
   const countOfDigits = digits.length;
   const sumOfDigits = digits.reduce((a, b) => a + b);
   const average = sumOfDigits / countOfDigits;
