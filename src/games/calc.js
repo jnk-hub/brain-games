@@ -6,7 +6,7 @@ const operations = {
   "-": (a, b) => a - b,
   "*": (a, b) => a * b
 };
-const operationSymbols = Object.keys(operations);
+const SymbolsOfOperations = Object.keys(operations);
 
 const rule = "What is the result of the expression?";
 
@@ -16,11 +16,12 @@ const game = () => {
   const a = randomNumber(upperLimitOfNumber);
   const b = randomNumber(upperLimitOfNumber);
 
-  const operation = operationSymbols[randomNumber(operationSymbols.length)];
+  const operationSymbol =
+    SymbolsOfOperations[randomNumber(SymbolsOfOperations.length)];
 
   return {
-    question: `${a} ${operation} ${b}`,
-    answer: String(operations[operation](a, b))
+    question: `${a} ${operationSymbol} ${b}`,
+    answer: String(operations[operationSymbol](a, b))
   };
 };
 
