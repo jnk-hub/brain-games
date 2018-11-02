@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-import game from "../games/balance";
+import '@babel/polyfill';
+import game from '../games/balance';
 
 game();

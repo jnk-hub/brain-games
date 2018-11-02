@@ -1,5 +1,5 @@
-import gameplay from "..";
-import { randomNumber } from "../utils";
+import gameplay from '..';
+import {randomNumber} from '../utils';
 
 const gcd = (a, b) => (b ? gcd(b, a % b) : a);
 
@@ -10,9 +10,9 @@ const game = () => {
   const b = randomNumber(upperLimitOfNumber);
   return {
     question: `GCD ${a} & ${b}`,
-    answer: String(gcd(a, b))
+    answer: String(gcd(a, b)),
   };
 };
-game.rule = "Find the greatest common divisor of given numbers.";
+game.rule = 'Find the greatest common divisor of given numbers.';
 
 export default () => gameplay(game);
