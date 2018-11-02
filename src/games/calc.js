@@ -1,29 +1,20 @@
 import gameplay from '..';
-import {randomNumber} from '../utils';
-
-const operations = {
-  '+': (a, b) => a + b,
-  '-': (a, b) => a - b,
-  '*': (a, b) => a * b,
-};
-
-const getRandomOperationSymbol = () => {
-  const symbols = Object.keys(operations);
-  return symbols[randomNumber(symbols.length)];
-};
-
-const getOperationFunction = (symbol) => operations[symbol];
+import {randomNumber, chosen} from '../utils';
 
 const upperLimitOfNumber = 10;
+const operations = [
+  ['+', (a, b) => a + b],
+  ['-', (a, b) => a - b],
+  ['*', (a, b) => a * b],
+];
 
 const game = () => {
   const a = randomNumber(upperLimitOfNumber);
   const b = randomNumber(upperLimitOfNumber);
-  const operationSymbol = getRandomOperationSymbol();
-  const operationFunction = getOperationFunction(operationSymbol);
+  const [symbol, operation] = chosen(...operations);
   return {
-    question: `${a} ${operationSymbol} ${b}`,
-    answer: String(operationFunction(a, b)),
+    question: `${a} ${symbol} ${b}`,
+    answer: String(operation(a, b)),
   };
 };
 game.rule = 'What is the result of the expression?';

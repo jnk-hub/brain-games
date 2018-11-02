@@ -14,16 +14,17 @@ export default (game) => {
       return;
     }
     const {question, answer} = game();
-    const attempt = readlineSync.question(`Question: ${question} `);
+    const attempt = readlineSync.question(
+      `Question: ${question}\nyour answer: `,
+    );
     if (answer === attempt) {
       console.log('Correct!\n');
       turn(steps - 1);
     } else {
       console.log(
-        `'${attempt}' is wrong answer =(\n`,
-        `Correct answer was '${answer}'\n`,
-        '\n',
-        `Let's try again, ${player}!`,
+        `'${attempt}' is wrong answer =(`,
+        `\nCorrect answer was '${answer}'\n`,
+        `\nLet's try again, ${player}!`,
       );
     }
   };
